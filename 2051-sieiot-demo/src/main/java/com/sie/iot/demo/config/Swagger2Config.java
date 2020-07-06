@@ -36,14 +36,14 @@ public class Swagger2Config {
     public Docket createRestApi() {
         ParameterBuilder ticketPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<Parameter>();
-        ticketPar.name("Authorization").description("认证token")
-                .modelRef(new ModelRef("string")).parameterType("header")
-                .required(false).build(); //header中的ticket参数非必填，传空也可以
-        pars.add(ticketPar.build());    //根据每个方法名也知道当前方法在设置什么参数
+//        ticketPar.name("Authorization").description("认证token")
+//                .modelRef(new ModelRef("string")).parameterType("header")
+//                .required(false).build(); //header中的ticket参数非必填，传空也可以
+//        pars.add(ticketPar.build());    //根据每个方法名也知道当前方法在设置什么参数
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.sie.iot.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.sie.iot.demo.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(pars);

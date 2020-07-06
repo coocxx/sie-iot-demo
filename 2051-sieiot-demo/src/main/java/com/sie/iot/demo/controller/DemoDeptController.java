@@ -1,10 +1,15 @@
 package com.sie.iot.demo.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.sie.iot.demo.model.inter.IDemoDept;
 
 import com.alibaba.fastjson.JSONObject;
 import com.siefw.base.utils.SToolUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.StringUtils;
 import com.sie.iot.common.bean.ResponseData;
 import com.sie.iot.common.bean.ResponseData;
@@ -33,6 +38,7 @@ import com.sie.iot.demo.model.entities.DemoDeptEntity_HI;
 
 @RestController
 @RequestMapping("/demo-dept")
+@Api(value = "部门管理",tags = {"部门管理"})
 public class DemoDeptController extends CommonAbstractService{
 	private static final Logger LOGGER = LoggerFactory.getLogger(DemoDeptController.class);
 
@@ -49,6 +55,7 @@ public class DemoDeptController extends CommonAbstractService{
 	 * @param id
 	 * @return
 	 */
+	@ApiOperation(value = "通过部门ID获取部门",notes = "通过部门ID获取部门 ",httpMethod ="GET" )
 	@GetMapping(value = "/get-Id")
 	public ResponseData findById(Long id) {
 //		UserSessionBean userSessionBean = this.getUserSessionBean();
@@ -62,6 +69,7 @@ public class DemoDeptController extends CommonAbstractService{
 		}
 	}
 
+	@ApiOperation(value = "获取部门列表",notes = "获取部门列表 ",httpMethod ="POST" )
 	@PostMapping(value="/find-pagination")
 	public ResponseData findByPage(@RequestBody PaginationRequestData<DemoDeptBean> paginationRequestData){
 //	    UserSessionBean userSessionBean = this.getUserSessionBean();
@@ -79,6 +87,8 @@ public class DemoDeptController extends CommonAbstractService{
 	    }
 	}
 
+
+	@ApiOperation(value = "保存",notes = "保存 ",httpMethod ="POST" )
 	@PostMapping(value = "/save")
 	public ResponseData save(@RequestBody RequestData<DemoDeptBean> requestData){
 //		UserSessionBean userSessionBean = this.getUserSessionBean();
@@ -104,6 +114,10 @@ public class DemoDeptController extends CommonAbstractService{
 	    }
 	}
 
+	@ApiOperation(value = "删除",notes = "删除 ",httpMethod ="GET" )
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "id", value = "部门ID", paramType = "query", dataType = "long",required = true),
+	})
 	@GetMapping(value = "/delete-id")
 	public ResponseData deleteById(@RequestParam Long id){
 //		UserSessionBean userSessionBean = this.getUserSessionBean();
@@ -116,6 +130,7 @@ public class DemoDeptController extends CommonAbstractService{
 	    }
 	}
 
+	@ApiOperation(value = "更新",notes = "更新 ",httpMethod ="POST" )
 	@PostMapping(value="/update")
 	public ResponseData update(@RequestBody RequestData<DemoDeptBean> requestData){
 //		UserSessionBean userSessionBean = this.getUserSessionBean();
@@ -125,6 +140,7 @@ public class DemoDeptController extends CommonAbstractService{
 	    if(null != demoDeptEntity_HI){
 	    	//判断部门名称是否重复 TODO
 
+			BeanUtil.copyProperties(demoDeptBean,demoDeptEntity_HI,"deptCode");
 	    	//固定
 			demoDeptEntity_HI.setOperatorUserId(1L);
 	    }else{

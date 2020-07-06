@@ -33,7 +33,7 @@ public class DemoDeptEntity_HI implements Serializable{
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date lastUpdateDate; //更新时间
     private Long lastUpdateLogin; //最后登录ID
-    private Integer deleteFlag; //删除标识 0表示未删除 1表示删除
+    private Integer deleteFlag = 0; //删除标识 0表示未删除 1表示删除
     private Integer versionNum; //版本号
     private Long operatorUserId;
 

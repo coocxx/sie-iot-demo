@@ -1,14 +1,23 @@
 package com.sie.iot.demo.bean;
 import com.sie.iot.common.bean.ReqeustCommonDataBean;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-
+@ApiModel("部门")
 public class DemoDeptBean extends ReqeustCommonDataBean{
+    @ApiModelProperty(value = "主键id")
     private Long deptId; //主键
+    @ApiModelProperty(value = "部门名称")
     private String deptName; //部门名称
+    @ApiModelProperty(value = "部门编码")
     private String deptCode; //部门编码
+    @ApiModelProperty(value = "部门地址")
     private String deptAddress; //部门地址
+    @ApiModelProperty(value = "部门联系人")
     private String deptContactName; //部门联系人
+    @ApiModelProperty(value = "部门联系人ID")
     private Long deptContactId; //部门联系人ID
+    @ApiModelProperty(value = "联系电话")
     private String deptContactMoblie; //联系电话
 
     private Long operatorUserId;
