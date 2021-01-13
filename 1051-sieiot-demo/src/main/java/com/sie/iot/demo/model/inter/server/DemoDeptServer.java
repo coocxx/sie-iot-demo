@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.sie.iot.common.bean.OrderByBean;
+import com.sie.iot.demo.model.entities.DemoStaffEntity_HI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class DemoDeptServer extends BaseCommonServer<DemoDeptEntity_HI> implemen
 		DemoDeptEntity_HI demoDeptEntity_HI = this.getById(id);
 		return demoDeptEntity_HI;
 	}
+//	@Override
+//	public DemoStaffEntity_HI findById(Long id) {
+//		DemoStaffEntity_HI demoStaffEntity_HI = this.getById(id);
+//		return demoStaffEntity_HI;
+//	}
 
 	@Override
 	public Pagination<DemoDeptEntity_HI> findPagination(JSONObject jsonObject, Integer pageIndex, Integer pageRows, OrderByBean orderByBean) {

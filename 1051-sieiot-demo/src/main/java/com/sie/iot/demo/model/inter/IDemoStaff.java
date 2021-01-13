@@ -8,9 +8,9 @@ import com.siefw.hibernate.core.paging.Pagination;
 import com.sie.iot.demo.model.entities.DemoDeptEntity_HI;
 import com.sie.iot.common.model.inter.IBaseCommon;
 
-public interface IDemoDept extends IBaseCommon<DemoDeptEntity_HI>{
+public interface IDemoStaff extends IBaseCommon<DemoStaffEntity_HI>{
 
-	DemoDeptEntity_HI findById(Long id);
-	Pagination<DemoDeptEntity_HI> findPagination(JSONObject jsonObject, Integer pageIndex, Integer pageRows, OrderByBean orderByBean);
-    boolean checkDeptName(String deptName);
+    DemoStaffEntity_HI findById(Long id);
+    Pagination<DemoStaffEntity_HI> findPagination(JSONObject jsonObject, Integer pageIndex, Integer pageRows, OrderByBean orderByBean);
+    boolean checkUserName(String userName);
 }
