@@ -13,8 +13,6 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.sie.iot.demo.model.dao,com.sie.iot.demo.model.inter.server"/>
 
-
-
     <bean id="dataSource" destroy-method="close" class="com.sie.iot.common.dbcp.BasicDataSourceDecrypt">
         <property name="driverClassName" value="${properties.jdbc.driverClassName}"/>
         <property name="url" value="${properties.jdbc.url}"/>
@@ -27,7 +25,6 @@
         <property name="minIdle" value="${properties.jdbc.minIdle}"/>
     </bean>
 
-    <!--  在分支修改，测试合并到dev  -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
