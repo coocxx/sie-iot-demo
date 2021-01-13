@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 import com.alibaba.fastjson.annotation.JSONField;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Version;
 import javax.persistence.Transient;
 
@@ -41,8 +43,9 @@ public class DemoDeptEntity_HI implements Serializable{
 		this.deptId = deptId;
 	}
 
-	@Id	
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@Id
+	@GenericGenerator(name = "redisGenerationId", strategy = "com.sie.iot.common.idgenerate.RedisGenerationId")
+	@GeneratedValue(generator = "redisGenerationId")
 	@Column(name="dept_id", nullable=false, length=20)	
 	public Long getDeptId() {
 		return deptId;
