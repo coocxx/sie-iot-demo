@@ -1,14 +1,15 @@
 package com.sie.iot.demo.bean;
+
 import com.alibaba.fastjson.annotation.JSONField;
 import com.sie.iot.common.bean.ReqeustCommonDataBean;
 
 import java.util.Date;
 
-public class DemoUserBean extends ReqeustCommonDataBean{
+public class DemoUserBean extends ReqeustCommonDataBean {
 
     private Long userId; //主键
     private String userName; //名称
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date userBirthdate; //生日
     private String userAddress; //地址
     private String userMobile; //联系方式
