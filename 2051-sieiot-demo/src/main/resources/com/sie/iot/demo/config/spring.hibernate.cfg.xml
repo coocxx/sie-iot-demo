@@ -26,10 +26,8 @@
         <property name="maxIdle" value="${properties.jdbc.maxIdle}"/>
         <property name="minIdle" value="${properties.jdbc.minIdle}"/>
     </bean>
-    <!--<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">-->
-        <!---->
-    <!--</bean>-->
 
+    <!--  在分支修改，测试合并到dev  -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
