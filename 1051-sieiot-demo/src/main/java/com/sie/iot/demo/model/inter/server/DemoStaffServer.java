@@ -20,7 +20,7 @@ import com.siefw.hibernate.core.dao.ViewObject;
 import com.sie.iot.demo.model.inter.IDemoDept;
 import com.sie.iot.common.model.inter.server.BaseCommonServer;
 
-@Component("demoDeptServer")
+@Component("demoStaffServer")
 public class DemoStaffServer extends BaseCommonServer<DemoStaffEntity_HI> implements IDemoStaff {
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoStaffServer.class);
 
@@ -53,9 +53,9 @@ public class DemoStaffServer extends BaseCommonServer<DemoStaffEntity_HI> implem
     @Override
     public Pagination<DemoStaffEntity_HI> findPagination(JSONObject jsonObject, Integer pageIndex, Integer pageRows, OrderByBean orderByBean) {
         Map<String, Object> paramsMap = SToolUtils.fastJsonObj2Map(jsonObject);
-        StringBuffer querySQLSB = new StringBuffer(" from DemoDeptEntity_HI where deleteFlag=0 ");
+        StringBuffer querySQLSB = new StringBuffer(" from DemoStaffEntity_HI where created_by=1 ");
 
-        SaafToolUtils.parperParam(jsonObject, "dept_name", "deptName", querySQLSB, paramsMap, "like");
+        SaafToolUtils.parperParam(jsonObject, "user_name", "userName", querySQLSB, paramsMap, "like");
 
 //		if(jsonObject.get("acAssetStatuss")!=null){
 //			List<String> acAssetStatuss =  JSONObject.parseArray(JSONObject.toJSONString(jsonObject.get("acAssetStatuss")),String.class);

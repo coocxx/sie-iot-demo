@@ -8,6 +8,7 @@ import com.sie.iot.demo.model.inter.IDemoDept;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sie.iot.demo.model.inter.IDemoStaff;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -27,12 +28,14 @@ import com.sie.iot.common.iotenum.StatusCodeEnum;
 import com.sie.iot.demo.bean.DemoDeptBean;
 
 import com.sie.iot.demo.model.entities.DemoStaffEntity_HI;
-
+@RestController
+@RequestMapping("/demo-user")
+@Api(value = "使用者管理",tags = {"使用者管理"})
 public class DemoStaffController extends CommonAbstractService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoStaffController.class);
 
     @Autowired
-    private IDemoStaff demoStaffServer;//IBaseCommon<DemoDeptEntity_HI>
+    private IDemoStaff demoStaffServer;
 
     @Override
     public IBaseCommon getBaseCommonServer(){
@@ -87,10 +90,10 @@ public class DemoStaffController extends CommonAbstractService {
         if(StrUtil.isNotBlank(demoStaffBean.getUserName())){
             //判断部门名称是否重复
             if(demoStaffServer.checkUserName(demoStaffBean.getUserName())){
-                return new ResponseData(StatusCodeEnum.ERROR_CODE.getStatusCode(), "部门名称已经存在");
+                return new ResponseData(StatusCodeEnum.ERROR_CODE.getStatusCode(), "使用者名称已经存在");
             }
         }else{
-            return new ResponseData(StatusCodeEnum.ERROR_CODE.getStatusCode(), "部门名称不能为空");
+            return new ResponseData(StatusCodeEnum.ERROR_CODE.getStatusCode(), "使用者名称不能为空");
         }
         DemoStaffEntity_HI demoStaffEntity_HI = JSONObject.parseObject(JSONObject.toJSONString(demoStaffBean),DemoStaffEntity_HI.class);
         //固定

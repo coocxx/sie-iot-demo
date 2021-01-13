@@ -21,8 +21,10 @@ import javax.persistence.Transient;
 public class DemoStaffEntity_HI implements Serializable{
     private Long userId; //主键
     private String userName; //使用者名称
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private String userBirthdate;//使用者生日
     private String userAddress; //使用者地址
-    private String userMoblie; //使用者联系电话
+    private String userMobile; //使用者联系电话
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date creationDate; //创建时间
     private Long createdBy; //创建人
@@ -33,6 +35,8 @@ public class DemoStaffEntity_HI implements Serializable{
     private Integer deleteFlag = 0; //删除标识 0表示未删除 1表示删除
     private Integer versionNum; //版本号
     private Long operatorUserId;
+
+
 
     public void setUserId(Long staffId) {
         this.userId = staffId;
@@ -54,6 +58,15 @@ public class DemoStaffEntity_HI implements Serializable{
         return userName;
     }
 
+    @Column(name="user_birthdate",nullable = true,length=64)
+    public String getUserBirthdate() {
+        return userBirthdate;
+    }
+
+    public void setUserBirthdate(String userBirthdate) {
+        this.userBirthdate = userBirthdate;
+    }
+
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
@@ -63,13 +76,13 @@ public class DemoStaffEntity_HI implements Serializable{
         return userAddress;
     }
 
-    public void setUserMoblie(String userMoblie) {
-        this.userMoblie = userMoblie;
+    public void setUserMobile(String userMoblie) {
+        this.userMobile = userMoblie;
     }
 
-    @Column(name="user_moblie", nullable=true, length=20)
-    public String getUserMoblie() {
-        return userMoblie;
+    @Column(name="user_mobile", nullable=true, length=20)
+    public String getUserMobile() {
+        return userMobile;
     }
 
     public void setCreationDate(Date creationDate) {

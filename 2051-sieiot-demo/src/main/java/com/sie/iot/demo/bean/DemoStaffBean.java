@@ -7,12 +7,12 @@ import io.swagger.annotations.ApiModelProperty;
 public class DemoStaffBean extends ReqeustCommonDataBean{
     @ApiModelProperty(value = "主键id")
     private Long userId; //主键
-    @ApiModelProperty(value = "部门名称")
+    @ApiModelProperty(value = "使用者名称")
     private String userName; //部门名称
-    @ApiModelProperty(value = "部门地址")
+    @ApiModelProperty(value = "使用者地址")
     private String userAddress; //部门地址
-    @ApiModelProperty(value = "联系电话")
-    private String userMoblie; //联系电话
+    @ApiModelProperty(value = "使用者联系电话")
+    private String userMobile; //联系电话
 
     private Long operatorUserId;
 
@@ -42,12 +42,12 @@ public class DemoStaffBean extends ReqeustCommonDataBean{
     }
 
 
-    public String getUserMoblie() {
-        return userMoblie;
+    public String getUserMobile() {
+        return userMobile;
     }
 
-    public void setUserMoblie(String userMoblie) {
-        this.userMoblie = userMoblie;
+    public void setUserMobile(String userMobile) {
+        this.userMobile = userMobile;
     }
 
     public Long getOperatorUserId() {
