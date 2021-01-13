@@ -51,6 +51,12 @@ public class DemoUserServer extends BaseCommonServer<DemoUserEntity_HI> implemen
 		//if(jsonObject.containsKey("useStatus")){
 		//  querySQLSB.append("and useStatus = :useStatus ");
 		//}
+		if (orderByBean == null) {
+			OrderByBean orderByBeanDefault = new OrderByBean();
+			orderByBeanDefault.setAttributeName("creation_date");
+			orderByBeanDefault.setSortType("desc");
+			orderByBean = orderByBeanDefault;
+		}
 		SaafToolUtils.sortUtil(orderByBean, querySQLSB);
 		List<DemoUserEntity_HI> demoUserEntity_HIs = demoUserDAO_HI.findList(querySQLSB.toString(), paramsMap);
 		return demoUserEntity_HIs;
@@ -65,6 +71,12 @@ public class DemoUserServer extends BaseCommonServer<DemoUserEntity_HI> implemen
 		//if(jsonObject.containsKey("useStatus")){
 		//    querySQLSB.append("and useStatus = :useStatus ");
 		//}
+		if (orderByBean == null) {
+			OrderByBean orderByBeanDefault = new OrderByBean();
+			orderByBeanDefault.setAttributeName("creation_date");
+			orderByBeanDefault.setSortType("desc");
+			orderByBean = orderByBeanDefault;
+		}
 		SaafToolUtils.sortUtil(orderByBean, querySQLSB);
 		Pagination<DemoUserEntity_HI> demoUserEntity_HIs = demoUserDAO_HI.findPagination(querySQLSB.toString(), paramsMap, pageIndex, pageRows);
 		return demoUserEntity_HIs;
